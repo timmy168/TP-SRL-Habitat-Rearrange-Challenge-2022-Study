@@ -57,3 +57,37 @@ First setup Habitat Sim in a new conda environment so you can download the datas
     ```
     ln -s <absolute path to download folder> data
     ```
+1. Replace the config file in from the repository
+
+1. Model could be download at
+
+# TP-SRL
+Train individual skill policies with RL, and evaluate with the 'rearrange_easy' task
+1. Install [Habitat-Lab](https://github.com/facebookresearch/habitat-lab/) - Use the `rearrange_challenge_2022` branch in our Github repo, which can be cloned using: 
+    ```
+    git clone --branch rearrange_challenge_2022 https://github.com/facebookresearch/habitat-lab.git
+    ``` 
+    Install Habitat Lab along with the included RL trainer code by first entering the `habitat-lab` directory, activating the `habitat` conda environment from step 1, and then running `pip install -r requirements.txt && python setup.py develop --all`.
+(It is recomended that habitat lab should be put in the same directory with habitat-challenge)
+1. Steps to train the skills from scratch:
+
+    1. Train the Pick skill. From the Habitat Lab directory, run 
+    ```bash
+    python habitat_baselines/run.py \
+        --exp-config habitat_baselines/config/rearrange/ddppo_pick.yaml \
+        --run-type train \
+        TENSORBOARD_DIR ./pick_tb/ \
+        CHECKPOINT_FOLDER ./pick_checkpoints/ \
+        LOG_FILE ./pick_train.log
+    ```
+    1. Train the Place skill. Use the exact same command as the above, but replace every instance of "pick" with "place".
+    1. Train the Navigation skill. Use the exact same command as the above, but replace every instance of "pick" with "nav_to_obj".
+    1. Copy the checkpoints for the different skills to the `data/models` directory in the Habitat Challenge directory. There should now be three files `data/models/[nav,pick,place].pth`.
+
+1. Instead of training the skills, you can also use the provided pre-trained skills. Download the skills via 
+
+1. Finally, evaluate the combined policies on the minival dataset for the `rearrange_easy` task from the command line. First enter the `habitat-challenge` directory. Ensure, you have the datasets installed in this directory as well. If not, run `python -m habitat_sim.utils.datasets_download --uids rearrange_task_assets`.
+    ```bash
+    CHALLENGE_CONFIG_FILE=configs/tasks/rearrange_easy.local.rgbd.yaml python agents/habitat_baselines_agent.py --evaluation local --input-type depth --cfg-path configs/methods/tp_srl.yaml
+    ```
+    Using the pre-trained skills from the Google Drive, you should see around a `20%` success rate.
