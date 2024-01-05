@@ -93,3 +93,11 @@ Train individual skill policies with RL, and evaluate with the 'rearrange_easy' 
     Using the pre-trained skills from the Google Drive, you should see around a `20%` success rate.
 
 # Result
+## Pick Success Rate per checkpoints (100 Million Training Steps)
+[!image](https://github.com/timmy168/TP-SRL-Habitat-Rearrange-Challenge-Easy-2022-Study/blob/main/result/pick_result.png)
+
+## Place Success Rate per checkpoints (100 Million Training Steps)
+[!image](https://github.com/timmy168/TP-SRL-Habitat-Rearrange-Challenge-Easy-2022-Study/blob/main/result/place_result.png)
+
+## Navigation to Object Rate per checkpoints (100 Million Training Steps)
+[!image]()
