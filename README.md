@@ -28,7 +28,7 @@ First setup Habitat Sim in a new conda environment so you can download the datas
 
 1. Prepare your [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/) env:
     ```bash
-    # We require python>=3.7 and cmake>=3.10
+    # python>=3.7 and cmake>=3.10
     conda create -n habitat python=3.7 cmake=3.14.0
     conda activate habitat
     ```
