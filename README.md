@@ -59,7 +59,7 @@ First setup Habitat Sim in a new conda environment so you can download the datas
     ```
 1. Replace the config file in from the repository
 
-1. Model could be download at
+1. Model could be download at [models](https://drive.google.com/drive/folders/1g1CKh_uclKiFxCiL59F3lBRxiyXtT8kF)
 
 # TP-SRL
 Train individual skill policies with RL, and evaluate with the 'rearrange_easy' task
@@ -84,7 +84,7 @@ Train individual skill policies with RL, and evaluate with the 'rearrange_easy' 
     1. Train the Navigation skill. Use the exact same command as the above, but replace every instance of "pick" with "nav_to_obj".
     1. Copy the checkpoints for the different skills to the `data/models` directory in the Habitat Challenge directory. There should now be three files `data/models/[nav,pick,place].pth`.
 
-1. Instead of training the skills, you can also use the provided pre-trained skills. Download the skills via 
+1. Instead of training the skills, you can also use the provided trained skills. Download the skills via [models](https://drive.google.com/drive/folders/1g1CKh_uclKiFxCiL59F3lBRxiyXtT8kF)
 
 1. Finally, evaluate the combined policies on the minival dataset for the `rearrange_easy` task from the command line. First enter the `habitat-challenge` directory. Ensure, you have the datasets installed in this directory as well. If not, run `python -m habitat_sim.utils.datasets_download --uids rearrange_task_assets`.
     ```bash
