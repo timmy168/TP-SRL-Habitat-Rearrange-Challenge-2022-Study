@@ -1,5 +1,5 @@
 # TP-SRL-Habitat-Rearrange-Challenge-2022-Study
-This is a small work on testing and studing the method of Task Planning and Skills RL (TP-SRL) method on the long horizon mobile manipulation task on Habitat Rearrange Challenge 2022, and mainly tested and studied on the easy task. The work is inspired and learned from [habitat rearrange challenge 2022](https://github.com/facebookresearch/habitat-challenge/tree/rearrangement-challenge-2022).
+This is a small work on testing and studing the method of Task Planning and Skills RL (TP-SRL) method on the long horizon mobile manipulation task on Habitat Rearrange Challenge 2022, and mainly tested and studied on the easy task. The work is inspired and learned from [habitat rearrange challenge 2022 github](https://github.com/facebookresearch/habitat-challenge/tree/rearrangement-challenge-2022).
 
 # Task: Object Rearrangement
 In the object rearrangement task, a Fetch robot is randomly spawned in an unknown environment and asked to rearrange 1 object from an initial to desired position – picking/placing it from receptacles (counter, sink, sofa, table), opening/closing containers (drawers, fridges) as necessary. A map of the environment is not provided and the agent must only use its sensory input to navigate and rearrange.
@@ -10,5 +10,50 @@ Additionally, the robot has proprioceptive joint sensing providing access to the
 
 For details about the agent, dataset, and evaluation, see the challenge website: [aihabitat.org/challenge/2022_rearrange](https://aihabitat.org/challenge/2022_rearrange/).
 
-# Hardware Configuration
-This small work is trained on 
+# Preparation
+## Hardware Configuration
+This small work is trained on:
+(1) CPU: I7 8700
+(2) GPU: Nvidia GeForce GTX 1060 6GB
+
+## Environment Configuration
+You may use conda to create a environment
+(1) Python: 3.7.12
+(2) Pytorch: 1.13.1
+(3) Cuda: 11.7
+(4) Cudnn: 8.6.0
+
+## Installing Habitat-Sim and Downloading data
+First setup Habitat Sim in a new conda environment so you can download the datasets to evaluate your models locally
+
+1. Prepare your [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/) env:
+    ```bash
+    # We require python>=3.7 and cmake>=3.10
+    conda create -n habitat python=3.7 cmake=3.14.0
+    conda activate habitat
+    ```
+
+1. Install Habitat-Sim using our custom Conda package for habitat challenge 2022 with: 
+    ```
+    conda install -y habitat-sim-rearrange-challenge-2022  withbullet  headless -c conda-forge -c aihabitat
+    ```
+    **On MacOS, omit the `headless` argument**.    
+    Note: If you face any issues related to the `GLIBCXX` version after conda installation, please uninstall this conda package and install the habitat-sim repository from source (more information [here](https://github.com/facebookresearch/habitat-sim/blob/main/BUILD_FROM_SOURCE.md#build-from-source)). Make sure that you are using the `hab2_challenge_2022` tag and not the `stable` branch for your installation. 
+
+1. Clone the challenge repository:
+
+    ```bash
+    git clone -b rearrangement-challenge-2022 https://github.com/facebookresearch/habitat-challenge.git
+    cd habitat-challenge
+    ```
+
+1. Download the episode datasets, scenes, and all other assets with 
+    ```
+    python -m habitat_sim.utils.datasets_download --uids rearrange_task_assets --data-path <path to download folder>
+    ```
+    If this step was successful, you should see the train, val and minival splits in the `<path to download folder>/datasets/replica_cad/rearrange/v1/{train, val, minival}` folders respectively. 
+
+1. Now, create a symlink to the downloaded data in your habitat-challenge repository:
+    ```
+    ln -s <absolute path to download folder> data
+    ```
