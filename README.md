@@ -101,3 +101,6 @@ Train individual skill policies with RL, and evaluate with the 'rearrange_easy' 
 
 ## Navigation to Object Rate per checkpoints (100 Million Training Steps)
 ![image]()
+
+## Evaluation Result
+![image](https://github.com/timmy168/TP-SRL-Habitat-Rearrange-Challenge-Easy-2022-Study/blob/main/result/result.png)
