@@ -12,14 +12,14 @@ VIDEO_RENDER_VIEWS:
   - "THIRD_RGB_SENSOR"
 TEST_EPISODE_COUNT: -1
 EVAL_CKPT_PATH_DIR: "data/new_checkpoints"
-NUM_ENVIRONMENTS: 32
+NUM_ENVIRONMENTS: 16
 # Visual sensors to include
 SENSORS: ["HEAD_DEPTH_SENSOR"]
 CHECKPOINT_FOLDER: "data/new_checkpoints"
 NUM_UPDATES: -1
 TOTAL_NUM_STEPS: 1.0e8
 LOG_INTERVAL: 10
-NUM_CHECKPOINTS: 20
+NUM_CHECKPOINTS: 10000
 # Force PyTorch to be single threaded as
 # this improves performance considerably
 FORCE_TORCH_SINGLE_THREADED: True
@@ -36,11 +36,11 @@ RL:
 
   PPO:
     # ppo params
-    clip_param: 0.2
+    clip_param: 0.25
     ppo_epoch: 2
     num_mini_batch: 2
     value_loss_coef: 0.5
-    entropy_coef: 0.0001
+    entropy_coef: 0.00015
     lr: 2.5e-4
     eps: 1e-5
     max_grad_norm: 0.2
