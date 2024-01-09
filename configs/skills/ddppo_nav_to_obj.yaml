@@ -78,5 +78,6 @@ RL:
 
     # Model parameters
     backbone: resnet18
+    # backbone: resent50
     rnn_type: LSTM
     num_recurrent_layers: 2
