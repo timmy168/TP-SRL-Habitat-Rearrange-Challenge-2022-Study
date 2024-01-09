@@ -83,6 +83,7 @@ Train individual skill policies with RL, and evaluate with the 'rearrange_easy' 
     1. Train the Place skill. Use the exact same command as the above, but replace every instance of "pick" with "place".
     1. Train the Navigation skill. Use the exact same command as the above, but replace every instance of "pick" with "nav_to_obj".
     1. Copy the checkpoints for the different skills to the `data/models` directory in the Habitat Challenge directory. There should now be three files `data/models/[nav,pick,place].pth`.
+    1. The modified config file is provide in this repository, the directory of these files should be put at the foder: habitat_baselines/config/rearrange/   
 
 1. Instead of training the skills, you can also use the provided trained skills. Download the skills via [models](https://drive.google.com/drive/folders/1g1CKh_uclKiFxCiL59F3lBRxiyXtT8kF)
 
